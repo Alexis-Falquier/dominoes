@@ -3,13 +3,9 @@
 For the concept, and an initial jumping off point we used a mock blockchain that is a typscript version of this tutorial:
 https://hackernoon.com/learn-blockchains-by-building-one-117428612f46
 
-The full repo for the blockchain can be found in:
-https://github.com/adamstaveley/testchain.git
+### Building/Running the Typescript Blockchain
+Requires Node >= 8.4 and NPM >= 5.3
 
-
-### Building/Running the Typescript blockchain
-Requires Node (developed using >= 8.4) and NPM (>= 5.3). You can manage Node/NPM versions with NVM.
-TypeScript is part of the dependencies and will be installed locally.
 ```
 $ git clone https://github.com/Alexis-Falquier/dominoes.git
 $ cd mockchain/ts-main
