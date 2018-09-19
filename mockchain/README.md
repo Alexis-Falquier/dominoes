@@ -1,6 +1,6 @@
 ## Mock Blockchain and Concept CLI
 
-For the concept, and an initial jumping off point we used a mock blockchain that is a typscript version of this tutorial:
+For the concept, and an initial jumping off point we built and modified a mock blockchain that is a typscript version of this tutorial:
 https://hackernoon.com/learn-blockchains-by-building-one-117428612f46
 
 ### Building/Running the Typescript Blockchain
