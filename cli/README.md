@@ -3,7 +3,7 @@
 ## TODO
 - make it so you add node url as command line option (currently url hardocoded to my server)
 
-This CLI will connect to your instance of the dominoes chain and will be an easy way to interract with it.
+This CLI will connect to your instance of the dominoes chain and will be an easy way to interract with it. This means you need to have at least one node running the chain. Go to the dominoechain directory and follow the instructions if you have not done this.
 
 ## How to Run
 Simply start the script and provide the URL of one of your nodes so that it can connect and interact with your chain.
