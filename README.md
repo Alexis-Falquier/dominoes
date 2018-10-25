@@ -7,11 +7,14 @@ https://nat3dogg.github.io/Dominoes/
 
 The idea of the project is to demonstrate how we can leverage a blockchain in order to create an inmutable cannonical ledger for medical records.
 
-## TODO
-- adapt the mock blockchian such that it works for the specific usage of medical record keeping
-- create a CLI that connects and interracts with our blokchain
-- give CLI ability for patients and providers to add/look at records according to their permissions
-- create a web interface that mimicks what the CLI does
+## Run Your Own Dominoes Chain
 
-## Concept
-Go into the 'mockchain' directory to look at our concept demo.
+Go into the dominoechain directory and follow the instructions on how to deploy your own chain. Feel free to clone and adapt the code to run your own unique version of a basic blockchain.
+
+## CLI
+
+Once you have a dominoes chain running, use the CLI to interract with it. Go into the cli directory for more information.
+
+## FrontEnd
+
+We set up a basic front end react app, to show how we invision a doctor would interract with our chain.
