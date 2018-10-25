@@ -19,7 +19,7 @@ to run in the background:
 ```
 nohup python3 blockchain.py &
 ```
-To run in foregroound so you can see server logs:
+To run in foreground so you can see server logs:
 ```
 python3 blockchain.py 
 ```
