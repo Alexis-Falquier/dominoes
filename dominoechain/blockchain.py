@@ -65,7 +65,7 @@ peer_nodes = []
 
 
 
-
+# http call which applications will call for physicians to add records
 @node.route('/newrecord', methods=['POST'])
 def newRecord():
     # extract the medical record to be added to the chain
@@ -138,11 +138,11 @@ def mineNewBlock(new_record):
 
 
 
-# created a simple hash proof of work algo
+# created a simple sha256 hash proof of work algo
 def powAlgo():
     # loops until successfull
     # from random number 0-1000000000
-    # if sha256 hash returns a hash ending in '00000' our work is successfull
+    # if sha256 hash returns a hash ending in '00000' our work proof is successfull
     noProof = True
     while noProof:
         h = hashlib.sha256()
@@ -211,6 +211,7 @@ def getChains():
 
 
 # GET request that will return the current state of the chain
+# not useful for standard user / applications, they should use /verifiedchain
 @node.route('/chainstate', methods=['GET'])
 def getChainState():
     # need to do this to maintain chain integrity
@@ -237,6 +238,7 @@ def getChainState():
 
 # seperate GET request which will update the chain to make sure it is the verified one
 # will replace chain if its not the longest and return the new verified state
+# applications should use this call
 @node.route('/verifiedchain', methods=['GET'])
 def verifyChain():
     consensus()
@@ -246,6 +248,7 @@ def verifyChain():
 
 
 # request to register a new node
+# for internal use, should not be called by standard user / application
 @node.route('/registernode', methods=['POST'])
 def newNode():
     global peer_nodes
@@ -260,7 +263,8 @@ def newNode():
 
 
 
-
+# for internal use, returns the list of all nodes registered to this node currently
+# applications should not call this
 @node.route('/getnodes', methods=['GET'])
 def getNodes():
     registered_nodes = json.dumps({
@@ -269,7 +273,8 @@ def getNodes():
     return registered_nodes
 
 
-
+# calls on genesis node to see if any new nodes have been registered
+# updates registered nodes on this node if necessary
 def confirmNodes():
     if (PORT == 5000):
         return
@@ -283,7 +288,8 @@ def confirmNodes():
 
 
 
-
+# while not sure why it would be usefull, applications can call on this
+# returns the verified list of nodes registered on the chain
 @node.route('/verifiednodes', methods=['GET'])
 def verifiedNodes():
     confirmNodes()
@@ -294,11 +300,17 @@ def verifiedNodes():
 
 # when blockchain is initialized check if port option is given
 # run either on default port or whichever is given
+# currently written such that node clusters run on the same server
+# new nodes when spun up currently rely on 'genesis' node on port 5000
+# this is done to make it simple / economical for class puposes
+# small code change would allow for seperate server nodes to be spun up
 if __name__ == "__main__":
     # get the port from argument given
     argc= len( sys.argv )
     if argc > 2 :
 	    sys.exit()
+    # check if this is the genesis node
+    # if not register the genesis node, and register this node to the genesis node
     if (argc == 2) :
         PORT = sys.argv[1]
         peer_nodes.append("http://127.0.0.1:5000")
